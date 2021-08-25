@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <head>
   <title>Sample Question</title>
-  <link rel="stylesheet" type="text/css" href="style/basic.css">
+  <link rel="stylesheet" type="text/css" href="style/basic.css" media="all">
 </head>
 <body>
 <div class="container">
   <nav></nav>
-  <main><img class="image" src="img/cat.png"></main>
+  <main><img class="image" id="word"></main>
   <div id="parrot">
     <img class="image" src="img/parrot.png">
   </div>
-  <div id="content1">
-    <div id="ans1" class="answer" >A</div>
+  <div onClick="exercise.grade(1, this)" id="option1">
+    <div id="ans1" class="answer" ></div>
   </div>
-  <div id="content2">
-    <div id="ans2" class="answer" >B</div>
+  <div onClick="exercise.grade(2, this)" id="option2">
+    <div id="ans2" class="answer" ></div>
   </div>
-  <div id="content3">
-    <div id="ans3" class="answer" >C</div>
+  <div onClick="exercise.grade(3, this)" id="option3">
+    <div id="ans3" class="answer" ></div>
   </div>
-  <div id="content4">
-    <div id="ans4" class="answer" >D</div>
+  <div onClick="exercise.grade(4, this)" id="option4">
+    <div id="ans4" class="answer" ></div>
   </div>
   <footer>© 2021</footer>
 </div>
+<script src="scripts/basicExercise.js"></script>
 </body>
