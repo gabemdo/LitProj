@@ -3,20 +3,12 @@ class Word {
         this.initial = initial.toUpperCase();
         this.vowel = vowel.toUpperCase();
         this.final = final.toUpperCase();
-        this.sound = `audio/word/${word}.mp3`;
-        this.slow = `audio/word/${word}Slow.mp3`;
-        this.image = `img/word/${word}.png`;
+        this.word = word;
     }
 
-    get initial() {return this.initial;}
-
-    get vowel() {return this.vowel;}
-
-    get final() {return this.final;}
-
-    get sound() {return this.sound;}
-
-    get image() {return this.image;}
+    get sound() { return `audio/word/${this.word}.mp3`; }
+    get slow() { return `audio/word/${this.word}Slow.mp3`; }
+    get image() { return `img/word/${this.word}.mp3`; }
 
     loadWord(element) {
         let slowSound = new Audio(this.slow);
@@ -25,20 +17,20 @@ class Word {
             slowSound.play();
         });
     }
-}
+i}
 
 class Exercise {
     constructor(word, exerciseName, correctAnswer, incorrectAnswers) {
         this.word = word;
-        this.prompt = `audio/exercise/${exerciseName}Prompt.mp3`;
-        this.instruction = `audio/exercise/${exerciseName}Instruction.mp3`;
+        this.name = exerciseName;
         this.correct = correctAnswer(word, ); //function of type (Word, ) -> string;
         this.incorrect = incorrectAnswers(word, this.correct, ); //function of type (Word, ) -> [string, string, string];
         this.correctOption = Math.ceil(Math.random() * 4);
         this.correctSound = new Audio('audio/sfx/correct.mp3');
     }
 
-    get word() { return this.word; };
+    get prompt() { return `audio/exercise/${this.name}Prompt.mp3`; }
+    get instruction() {return `audio/exercise/${this.name}Instruction.mp3`; }
 
     get option1() { return this.correctOption == 1 ? this.correct : this.incorrect[0]; }
 
@@ -157,7 +149,7 @@ let exercises = [
     //pick exercise
     let exerciseChoice = Math.floor(Math.random() * exercises.length);
     console.log("The exercise choice is", exercises[exerciseChoice][0]);
-    let exercise = new Exercise(word, ...(exercises[exerciseChoice]));
+    let exercise = new Exercise(word, ...exercises[exerciseChoice]);
 
     //set up word image
     document.getElementByID("word").src = word.image;
