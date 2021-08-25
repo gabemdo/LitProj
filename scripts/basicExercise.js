@@ -161,15 +161,15 @@ let exercises = [
     document.getElementByID("word").src = word.image;
 
     //set up answers
-    document.getElementByID("option1").innerHTML = exercise.option1;
-    document.getElementByID("option2").innerHTML = exercise.option2; 
-    document.getElementByID("option3").innerHTML = exercise.option3;
-    document.getElementByID("option4").innerHTML = exercise.option4;
+    document.getElementByID("ans1").innerHTML = exercise.option1;
+    document.getElementByID("ans2").innerHTML = exercise.option2; 
+    document.getElementByID("ans3").innerHTML = exercise.option3;
+    document.getElementByID("ans4").innerHTML = exercise.option4;
 
-    document.getElementByID("option1").onClick = exercise.grade(this, 1);
-    document.getElementByID("option2").onClick = exercise.grade(this, 2);
-    document.getElementByID("option3").onClick = exercise.grade(this, 3);
-    document.getElementByID("option4").onClick = exercise.grade(this, 4);
+    document.getElementByID("ans1").onClick = exercise.grade(this, 1);
+    document.getElementByID("ans2").onClick = exercise.grade(this, 2);
+    document.getElementByID("ans3").onClick = exercise.grade(this, 3);
+    document.getElementByID("ans4").onClick = exercise.grade(this, 4);
 
     //play audio 
     let instructionAudio = new Audio(exercise.prompt);
