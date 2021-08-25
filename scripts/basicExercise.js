@@ -34,26 +34,26 @@ class Exercise {
         this.instruction = `audio/exercise/${exerciseName}Instruction.mp3`;
         this.correct = correctAnswer(word, ); //function of type (Word, ) -> string;
         this.incorrect = incorrectAnswers(word, this.correct, ); //function of type (Word, ) -> [string, string, string];
-        this.#correctOption = Math.ceil(Math.random() * 4);
+        this.correctOption = Math.ceil(Math.random() * 4);
         this.correctSound = new Audio('audio/sfx/correct.mp3');
     }
 
     get word() { return this.word; };
 
-    get option1() { return this.#correctOption == 1 ? this.correct : this.incorrect[0]; }
+    get option1() { return this.correctOption == 1 ? this.correct : this.incorrect[0]; }
 
-    get option2() { return this.#correctOption == 2 ? this.correct 
-                         : this.#correctOption == 1 ? this.incorrect[0]
+    get option2() { return this.correctOption == 2 ? this.correct 
+                         : this.correctOption == 1 ? this.incorrect[0]
                          : this.incorrect[1]; }
     
-    get option3() { return this.#correctOption == 3 ? this.correct 
-                         : this.#correctOption == 4 ? this.incorrect[2]
+    get option3() { return this.correctOption == 3 ? this.correct 
+                         : this.correctOption == 4 ? this.incorrect[2]
                          : this.incorrect[1]; }
 
-    get option4() { return this.#correctOption == 4 ? this.correct : this.incorrect[2]; }
+    get option4() { return this.correctOption == 4 ? this.correct : this.incorrect[2]; }
 
     grade(element, option) {
-        if (option == this.#correctOption) {
+        if (option == this.correctOption) {
             //show answer is correct 
             this.correctSound.play();
             element.classList.add("correct"); 
@@ -170,6 +170,7 @@ let exercises = [
     document.getElementByID("ans2").onClick = exercise.grade(this, 2);
     document.getElementByID("ans3").onClick = exercise.grade(this, 3);
     document.getElementByID("ans4").onClick = exercise.grade(this, 4);
+
 
     //play audio 
     let instructionAudio = new Audio(exercise.prompt);
