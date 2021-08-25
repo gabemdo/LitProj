@@ -150,16 +150,20 @@ let exercises = [
 (function() {
     //pick word
     let wordChoice = Math.floor(Math.random() * words.length);
-    let word = new Word(...words[wordChoice]);
+    console.log("The word choice is",words[wordChoice][3]);
+
+    let word = new Word(...(words[wordChoice]));
 
     //pick exercise
     let exerciseChoice = Math.floor(Math.random() * exercises.length);
+    console.log("The exercise choice is", exercises][exerciseChoice][0]);
     let exercise = new Exercise(word, ...exercises[exerciseChoice]);
 
     //set up word image
     document.getElementByID("word").src = word.image;
 
     //set up answers
+    console.log("Options:", exercise.option1, exercise.option2, exercise.option3, exercise.option4);
     document.getElementByID("ans1").innerHTML = exercise.option1;
     document.getElementByID("ans2").innerHTML = exercise.option2; 
     document.getElementByID("ans3").innerHTML = exercise.option3;
@@ -172,6 +176,7 @@ let exercises = [
 
 
     //play audio 
+    console.log("Play Audio prompt and sound");
     let instructionAudio = new Audio(exercise.prompt);
     let wordAudio = new Audio(word.sound);
 
