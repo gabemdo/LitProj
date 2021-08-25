@@ -156,8 +156,8 @@ let exercises = [
 
     //pick exercise
     let exerciseChoice = Math.floor(Math.random() * exercises.length);
-    console.log("The exercise choice is", exercises][exerciseChoice][0]);
-    let exercise = new Exercise(word, ...exercises[exerciseChoice]);
+    console.log("The exercise choice is", exercises[exerciseChoice][0]);
+    let exercise = new Exercise(word, ...(exercises[exerciseChoice]));
 
     //set up word image
     document.getElementByID("word").src = word.image;
