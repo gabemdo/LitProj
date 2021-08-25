@@ -19,7 +19,7 @@ body {
   grid-template-areas:
     "nav nav nav nav nav nav"
     "main main main . . parrot"
-    "content1 content2 content3 content4 . parrot"
+    "option1 option2 option3 option4 . parrot"
     "footer footer footer footer footer footer";
   grid-gap: 0.2rem;
   font-weight: 800;
@@ -37,7 +37,7 @@ body {
   background: var(--background-color, red);
   margin: 20px;
   display: flex;
-  border: var(--border-color) solid 2px;
+  border: var(--b) solid 2px;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
@@ -141,7 +141,7 @@ a {
       "nav nav nav nav"
       ". . parrot parrot"
       "main main main ."
-      "content1 content2 content3 content4"
+      "option1 option2 option3 option4"
       "footer footer footer footer";
   }
 }
