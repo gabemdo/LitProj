@@ -15,7 +15,7 @@ body {
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 1fr 1fr 1fr .4fr 1.6fr;
-  grid-template-rows: 1fr 6fr 6fr 1fr;
+  grid-template-rows: 1fr 8fr 4fr 1fr;
   grid-template-areas:
     "nav nav nav nav nav nav"
     "main main main . . parrot"
@@ -37,7 +37,7 @@ body {
   background: var(--background-color, red);
   margin: 20px;
   display: flex;
-  border: var(--b) solid 2px;
+  border: var(--border-color) solid 2px;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
@@ -69,25 +69,25 @@ main {
 
 #option1 {
   background: var(--background-color, green);
-  grid-area: content1;
+  grid-area: option1;
   padding-top: var(--main-padding);
 }
 
 #option2 {
   background: var(--background-color, cyan);
-  grid-area: content2;
+  grid-area: option2;
   padding-top: var(--main-padding);
 }
 
 #option3 {
   background: var(--background-color, blue);
-  grid-area: content3;
+  grid-area: option3;
   padding-top: var(--main-padding);
 }
 
 #option4 {
   background: var(--background-color, purple);
-  grid-area: content4;
+  grid-area: option4;
   padding-top: var(--main-padding);
 }
 
