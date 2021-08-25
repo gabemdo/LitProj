@@ -2,6 +2,9 @@
   --main-padding: 5px;
   --background-color: white;
   --font-color: #626;
+  --correct-color: green;
+  --incorrect-color: #CCC;
+  --border-color: #EEE;
 }
 
 body {
@@ -34,7 +37,7 @@ body {
   background: var(--background-color, red);
   margin: 20px;
   display: flex;
-  border: #EEE solid 2px;
+  border: var(--border-color) solid 2px;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
@@ -47,49 +50,49 @@ body {
 }
 
 nav {
-  background: var(--background-color, #a7ffeb);
+  background: var(--background-color, red);
   grid-area: nav;
   padding-top: var(--main-padding);
 }
 
 main {
-  background: var(--background-color, #84ffff);
+  background: var(--background-color, orange);
   grid-area: main;
   padding-top: var(--main-padding);
 }
 
 #parrot {
-  background: var(--background-color, #18ffff);
+  background: var(--background-color, yellow);
   grid-area: parrot;
   padding-top: var(--main-padding);
 }
 
-#content1 {
-  background: var(--background-color, #6fffd2);
+#option1 {
+  background: var(--background-color, green);
   grid-area: content1;
   padding-top: var(--main-padding);
 }
 
-#content2 {
-  background: var(--background-color, #64ffda);
+#option2 {
+  background: var(--background-color, cyan);
   grid-area: content2;
   padding-top: var(--main-padding);
 }
 
-#content3 {
-  background: var(--background-color, #73ffba);
+#option3 {
+  background: var(--background-color, blue);
   grid-area: content3;
   padding-top: var(--main-padding);
 }
 
-#content4 {
-  background: var(--background-color, #73bbba);
+#option4 {
+  background: var(--background-color, purple);
   grid-area: content4;
   padding-top: var(--main-padding);
 }
 
 footer {
-  background: var(--background-color, #1de9b6);
+  background: var(--background-color, pink);
   grid-area: footer;
   padding-top: var(--main-padding);
 }
@@ -101,6 +104,33 @@ a {
   text-decoration: none;
   font-weight: bold;
   margin: 1rem;
+}
+
+@keyframes correct {
+    from {background-color: var(--background-color);}
+    to {background-color: var(--correct-color);}
+}
+
+.correct {
+    background-color: var(--correct-color);
+    animation: correct 1s;
+}
+
+@keyframes incorrect {
+    0%  { transform: translate(0,0)  rotate(0deg);  }
+    9%  { transform: translate(-1,0) rotate(1deg);  }
+    19% { transform: translate(0,0)  rotate(0deg);  }
+    30% { transform: translate(1,0)  rotate(-1deg); }
+    42% { transform: translate(0,0)  rotate(0deg);  }
+    55% { transform: translate(-1,0) rotate(1deg);  }
+    69% { transform: translate(0,0)  rotate(0deg);  }
+    84% { transform: translate(1,0)  rotate(-1deg); }
+    100% {transform: translate(0,0)  rotate(0deg);  }
+}
+
+.incorrect {
+    animation: incorrect 0.5s;
+    color: var(--incorrect-color);
 }
 
 @media only screen and (max-width: 550px) {
