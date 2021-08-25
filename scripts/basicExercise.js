@@ -94,23 +94,6 @@ function incorrect(notAllowed, word, correct) {
     return distractors;
 };
 
-let incorrectFirst = function(word, correct) {
-    return incorrect(word.vowel,word,correct);
-}
-
-let incorreectLast = incorrectFirst;
-
-let incorrectMiddle = function(word, correct) {
-    return incorrect([], word, correct);
-}
-
-
-function correctFirst(word) { return word.initial; };
-function correctMiddle(word) { return word.vowel; };
-function correctEnd(word) { return word.final; };
-
-
-
 let words = [
     ['c', 'a', 't', 'cat'],
     ['b', 'a', 't', 'bat'],
@@ -141,10 +124,26 @@ let words = [
     ['c', 'u', 'p', 'cup'],
 ];
 
+let incorrectFirst = function(word, correct) {
+    return incorrect([word.vowel],word,correct);
+}
+
+let incorrectLast = incorrectFirst;
+
+let incorrectMiddle = function(word, correct) {
+    return incorrect([], word, correct);
+}
+
+
+function correctFirst(word) { return word.initial; };
+function correctMiddle(word) { return word.vowel; };
+function correctLast(word) { return word.final; };
+
+
 let exercises = [
     ['identifyFirst', correctFirst, incorrectFirst],
     ['identifyMiddle', correctMiddle, incorrectMiddle],
-    ['identifyLast', correctFinal, incorrectFinal],
+    ['identifyLast', correctLast, incorrectLast],
 ];
 
 
