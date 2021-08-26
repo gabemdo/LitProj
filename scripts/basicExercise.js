@@ -106,7 +106,7 @@ function incorrect(notAllowed, word, correct) {
     let distractors = [];
     for (let i = 0; i < 3; i++) {
         let newLetter = randomLetter();
-        while (newLetter in notAllowed) {
+        while (notAllowed.includes(newLetter)) {
             newLetter = randomLetter();
         }
         notAllowed.push(newLetter);
