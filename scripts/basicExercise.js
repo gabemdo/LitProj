@@ -98,7 +98,7 @@ let words = [
     ['c', 'u', 'p', 'cup'],
 ];
 
-function randomInt(min, max) {return min + Math.floor(Math.random * (max - min + 1)); };
+function randomInt(min, max) {return min + Math.floor(Math.random() * (max - min + 1)); };
 function randomLetter() { return String.fromCharCode(randomInt(65,90)); }
 
 function incorrect(notAllowed, word, correct) {
