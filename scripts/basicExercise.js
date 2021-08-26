@@ -152,19 +152,19 @@ let exercises = [
     let exercise = new Exercise(word, ...exercises[exerciseChoice]);
 
     //set up word image
-    //document.getElementByID("word").src = word.image;
+    document.getElementById("word").src = word.image;
 
     //set up answers
     console.log("Options:", exercise.option1, exercise.option2, exercise.option3, exercise.option4);
-    document.getElementByID("ans1").innerHTML = exercise.option1;
-    document.getElementByID("ans2").innerHTML = exercise.option2; 
-    document.getElementByID("ans3").innerHTML = exercise.option3;
-    document.getElementByID("ans4").innerHTML = exercise.option4;
+    document.getElementById("ans1").innerHTML = exercise.option1;
+    document.getElementById("ans2").innerHTML = exercise.option2; 
+    document.getElementById("ans3").innerHTML = exercise.option3;
+    document.getElementById("ans4").innerHTML = exercise.option4;
 
-    document.getElementByID("ans1").onClick = exercise.grade(this, 1);
-    document.getElementByID("ans2").onClick = exercise.grade(this, 2);
-    document.getElementByID("ans3").onClick = exercise.grade(this, 3);
-    document.getElementByID("ans4").onClick = exercise.grade(this, 4);
+    document.getElementById("ans1").onClick = exercise.grade(this, 1);
+    document.getElementById("ans2").onClick = exercise.grade(this, 2);
+    document.getElementById("ans3").onClick = exercise.grade(this, 3);
+    document.getElementById("ans4").onClick = exercise.grade(this, 4);
 
 
     //play audio 
