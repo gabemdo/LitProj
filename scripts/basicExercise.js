@@ -48,14 +48,16 @@ class Exercise {
     grade(element, option) {
         if (option == this.correctOption) {
             //show answer is correct 
-            this.correctSound.play();
-            element.classList.add("correct"); 
-            element.addEventListener('animationend', () => {
-                element.ownerDocument.location.refresh(true);
-            })
+            return (function(){
+                this.correctSound.play();
+                element.classList.add("correct"); 
+                element.addEventListener('animationend', () => {
+                    element.ownerDocument.location.refresh(true);
+                });
+            });
         } else {
             //show answer is incorrect
-            element.classList.add("incorrect");
+            return (function(){ return element.classList.add("incorrect"); });
         }
     }
 
