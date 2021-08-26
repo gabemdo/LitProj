@@ -8,7 +8,7 @@ class Word {
 
     get sound() { return `audio/word/${this.word}.mp3`; }
     get slow() { return `audio/word/${this.word}Slow.mp3`; }
-    get image() { return `img/word/${this.word}.mp3`; }
+    get image() { return `img/word/${this.word}.png`; }
 
     loadWord(element) {
         let slowSound = new Audio(this.slow);
@@ -152,7 +152,7 @@ let exercises = [
     let exercise = new Exercise(word, ...exercises[exerciseChoice]);
 
     //set up word image
-    document.getElementByID("word").src = word.image;
+    //document.getElementByID("word").src = word.image;
 
     //set up answers
     console.log("Options:", exercise.option1, exercise.option2, exercise.option3, exercise.option4);
