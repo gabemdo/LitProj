@@ -27,7 +27,8 @@ class Exercise {
         this.incorrect = incorrectAnswers(word, this.correct); //function of type (Word, ) -> [string, string, string];
         console.log(exerciseName, this.correct, this.incorrect);
         this.correctOption = Math.ceil(Math.random() * 4);
-        this.correctSound = new Audio('audio/sfx/correct.mp3');
+        //move audio elsewhere
+        //this.correctSound = new Audio('audio/sfx/correct.mp3');
     }
 
     get prompt() { return `audio/exercise/${this.name}Prompt.mp3`; }
@@ -45,19 +46,22 @@ class Exercise {
 
     get option4() { return this.correctOption == 4 ? this.correct : this.incorrect[2]; }
 
-    grade(element, option) {
+    grade(id, option) {
         if (option == this.correctOption) {
             //show answer is correct 
             return (function(){
-                this.correctSound.play();
+                let element = document.getElementById(id);
                 element.classList.add("correct"); 
                 element.addEventListener('animationend', () => {
-                    element.ownerDocument.location.refresh(true);
+                    document.location.refresh(true);
                 });
             });
         } else {
             //show answer is incorrect
-            return (function(){ return element.classList.add("incorrect"); });
+            return (function(){ 
+                let element = document.getElementById(id);
+                return element.classList.add("incorrect"); 
+            });
         }
     }
 
@@ -171,10 +175,10 @@ let exercises = [
     element3.innerHTML = exercise.option3;
     element4.innerHTML = exercise.option4;
 
-    element1.onClick = exercise.grade(element1, 1);
-    element2.onClick = exercise.grade(element2, 2);
-    element3.onClick = exercise.grade(element3, 3);
-    element4.onClick = exercise.grade(element4, 4);
+    element1.onClick = exercise.grade("ans1", 1);
+    element2.onClick = exercise.grade("ans2", 2);
+    element3.onClick = exercise.grade("ans3", 3);
+    element4.onClick = exercise.grade("ans4", 4);
 
 
     //play audio 
