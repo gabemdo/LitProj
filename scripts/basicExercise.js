@@ -99,7 +99,7 @@ let words = [
 ];
 
 function randomInt(min, max) {return min + Math.floor(Math.random * (max - min + 1)); };
-function randomLetter() { return String.fromCharCode(randomInt(65,91)); }
+function randomLetter() { return String.fromCharCode(randomInt(65,90)); }
 
 function incorrect(notAllowed, word, correct) {
     notAllowed.push(correct);
@@ -108,6 +108,7 @@ function incorrect(notAllowed, word, correct) {
         let newLetter = randomLetter();
         while (notAllowed.includes(newLetter)) {
             newLetter = randomLetter();
+            console.log(newLetter);
         }
         notAllowed.push(newLetter);
         distractors.push(newLetter);
