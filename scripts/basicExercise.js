@@ -183,8 +183,8 @@ let exercises = [
     })
 
     //set up prompt
-    exercise.loadInstruction(document.getElementByID("parrot"));
+    exercise.loadInstruction(document.getElementById("parrot"));
 
     //set up word audio
-    word.loadWord(document.getElemntByID("word"));
+    word.loadWord(document.getElemntById("word"));
 })();
