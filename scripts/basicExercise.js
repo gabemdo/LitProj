@@ -23,8 +23,9 @@ class Exercise {
     constructor(word, exerciseName, correctAnswer, incorrectAnswers) {
         this.word = word;
         this.name = exerciseName;
-        this.correct = correctAnswer(word, ); //function of type (Word, ) -> string;
-        this.incorrect = incorrectAnswers(word, this.correct, ); //function of type (Word, ) -> [string, string, string];
+        this.correct = correctAnswer(word); //function of type (Word, ) -> string;
+        this.incorrect = incorrectAnswers(word, this.correct); //function of type (Word, ) -> [string, string, string];
+        console.log(exerciseName, this.correct, this.incorrect);
         this.correctOption = Math.ceil(Math.random() * 4);
         this.correctSound = new Audio('audio/sfx/correct.mp3');
     }
@@ -67,25 +68,6 @@ class Exercise {
     }
 }
 
-function randomInt(min, max) {return min + Math.floor(Math.random * (max - min + 1)); };
-function randomLetter() { return String.fromCharCode(randomInt(65,91)); }
-function newPush(array, value) { return [...array, value]; }
-
-function incorrect(notAllowed, word, correct) {
-    notAllowed = newPush(notAllowed, correct);
-    let distractors = [];
-    for (let i = 0; i < 3; i++) {
-        let newLetter = randomLetter();
-        while (newLetter in notAllowed) {
-            newLetter = randomLetter();
-        }
-        notAllowed = newPush(notAllowed, newLetter);
-        distractors = newPush(distractors, newLetter);
-    }
-
-    return distractors;
-};
-
 let words = [
     ['c', 'a', 't', 'cat'],
     ['b', 'a', 't', 'bat'],
@@ -115,6 +97,25 @@ let words = [
     ['n', 'u', 't', 'nut'],
     ['c', 'u', 'p', 'cup'],
 ];
+
+function randomInt(min, max) {return min + Math.floor(Math.random * (max - min + 1)); };
+function randomLetter() { return String.fromCharCode(randomInt(65,91)); }
+
+function incorrect(notAllowed, word, correct) {
+    notAllowed.push(correct);
+    let distractors = [];
+    for (let i = 0; i < 3; i++) {
+        let newLetter = randomLetter();
+        while (newLetter in notAllowed) {
+            newLetter = randomLetter();
+        }
+        notAllowed.push(newLetter);
+        distractors.push(newLetter);
+    }
+
+    return distractors;
+};
+
 
 let incorrectFirst = function(word, correct) {
     return incorrect([word.vowel],word,correct);
@@ -156,15 +157,21 @@ let exercises = [
 
     //set up answers
     console.log("Options:", exercise.option1, exercise.option2, exercise.option3, exercise.option4);
-    document.getElementById("ans1").innerHTML = exercise.option1;
-    document.getElementById("ans2").innerHTML = exercise.option2; 
-    document.getElementById("ans3").innerHTML = exercise.option3;
-    document.getElementById("ans4").innerHTML = exercise.option4;
+    
+    let element1 = document.getElementById("ans1");
+    let element2 = document.getElementById("ans2");
+    let element3 = document.getElementById("ans3");
+    let element4 = document.getElementById("ans4");
 
-    document.getElementById("ans1").onClick = exercise.grade(this, 1);
-    document.getElementById("ans2").onClick = exercise.grade(this, 2);
-    document.getElementById("ans3").onClick = exercise.grade(this, 3);
-    document.getElementById("ans4").onClick = exercise.grade(this, 4);
+    element1.innerHTML = exercise.option1;
+    element2.innerHTML = exercise.option2; 
+    element3.innerHTML = exercise.option3;
+    element4.innerHTML = exercise.option4;
+
+    element1.onClick = exercise.grade(element1, 1);
+    element2.onClick = exercise.grade(element2, 2);
+    element3.onClick = exercise.grade(element3, 3);
+    element4.onClick = exercise.grade(element4, 4);
 
 
     //play audio 
