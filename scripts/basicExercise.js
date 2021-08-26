@@ -51,7 +51,7 @@ class Exercise {
             this.correctSound.play();
             element.classList.add("correct"); 
             element.addEventListener('animationend', () => {
-                elementownerDocument.location.refresh(true);
+                element.ownerDocument.location.refresh(true);
             })
         } else {
             //show answer is incorrect
@@ -179,6 +179,7 @@ let exercises = [
     let instructionAudio = new Audio(exercise.prompt);
     let wordAudio = new Audio(word.sound);
 
+    /*
     instructionAudio.addEventListener("canplaythrough", () => {
         instructionAudio.play();
     }); 
@@ -188,10 +189,11 @@ let exercises = [
             wordAudio.play();
         });
     })
+    */
 
     //set up prompt
     exercise.loadInstruction(document.getElementById("parrot"));
 
     //set up word audio
-    word.loadWord(document.getElemntById("word"));
+    word.loadWord(document.getElementById("word"));
 })();
