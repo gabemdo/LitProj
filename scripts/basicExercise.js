@@ -165,21 +165,16 @@ let exercises = [
 
     //set up answers
     console.log("Options:", exercise.option1, exercise.option2, exercise.option3, exercise.option4);
-    
-    let element1 = document.getElementById("ans1");
-    let element2 = document.getElementById("ans2");
-    let element3 = document.getElementById("ans3");
-    let element4 = document.getElementById("ans4");
+   
+    document.getElementById("ans1").innerHTML = exercise.option1;
+    document.getElementById("ans2").innerHTML = exercise.option2; 
+    document.getElementById("ans3").innerHTML = exercise.option3;
+    document.getElementById("ans4").innerHTML = exercise.option4;
 
-    element1.innerHTML = exercise.option1;
-    element2.innerHTML = exercise.option2; 
-    element3.innerHTML = exercise.option3;
-    element4.innerHTML = exercise.option4;
-
-    element1.onClick = exercise.grade("ans1", 1);
-    element2.onClick = exercise.grade("ans2", 2);
-    element3.onClick = exercise.grade("ans3", 3);
-    element4.onClick = exercise.grade("ans4", 4);
+    document.getElementById("ans1").onClick = exercise.grade("ans1", 1);
+    document.getElementById("ans2").onClick = exercise.grade("ans2", 2);
+    document.getElementById("ans3").onClick = exercise.grade("ans3", 3);
+    document.getElementById("ans4").onClick = exercise.grade("ans4", 4);
     console.log("Options initialized.")
 
 
