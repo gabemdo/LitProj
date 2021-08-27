@@ -159,7 +159,7 @@ let exercises = [
     let exercise = new Exercise(word, ...exercises[exerciseChoice]);
 
     //set up word image
-    document.getElementById("word").src = word.image;
+    //document.getElementById("word").src = word.image;
 
     //set up answers
     console.log("Options:", exercise.option1, exercise.option2, exercise.option3, exercise.option4);
@@ -174,10 +174,10 @@ let exercises = [
     element3.innerHTML = exercise.option3;
     element4.innerHTML = exercise.option4;
 
-    element1.onClick = function() {exercise.grade("ans1", 1);};
-    element2.onClick = function() {exercise.grade("ans2", 2);};
-    element3.onClick = function() {exercise.grade("ans3", 3);};
-    element4.onClick = function() {exercise.grade("ans4", 4);};
+    element1.onClick = function() {Word.grade.call(exercise,"ans1", 1);};
+    element2.onClick = function() {Word.grade.call(exercise,"ans2", 2);};
+    element3.onClick = function() {Word.grade.call(exercise,"ans3", 3);};
+    element4.onClick = function() {Word.grade.call(exercise,"ans4", 4);};
     console.log("Options initialized.")
 
 
