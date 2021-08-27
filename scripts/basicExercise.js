@@ -47,7 +47,9 @@ class Exercise {
     get option4() { return this.correctOption == 4 ? this.correct : this.incorrect[2]; }
 
     grade(id, option) {
+        console.log("Click grade:")
         if (option == this.correctOption) {
+            console.log("Correct answer");
             //show answer is correct 
             let element = document.getElementById(id);
             element.classList.add("correct"); 
@@ -55,6 +57,7 @@ class Exercise {
                 document.location.refresh(true);
             });
         } else {
+            console.log("Incorrect answer");
             //show answer is incorrect 
             let element = document.getElementById(id);
             element.classList.add("incorrect"); 
@@ -175,6 +178,7 @@ let exercises = [
     element2.onClick = function() {exercise.grade("ans2", 2);};
     element3.onClick = function() {exercise.grade("ans3", 3);};
     element4.onClick = function() {exercise.grade("ans4", 4);};
+    console.log("Options initialized.")
 
 
     //play audio 
