@@ -49,19 +49,15 @@ class Exercise {
     grade(id, option) {
         if (option == this.correctOption) {
             //show answer is correct 
-            return (function(){
-                let element = document.getElementById(id);
-                element.classList.add("correct"); 
-                element.addEventListener('animationend', () => {
-                    document.location.refresh(true);
-                });
+            let element = document.getElementById(id);
+            element.classList.add("correct"); 
+            element.addEventListener('animationend', () => {
+                document.location.refresh(true);
             });
         } else {
-            //show answer is incorrect
-            return (function(){ 
-                let element = document.getElementById(id);
-                return element.classList.add("incorrect"); 
-            });
+            //show answer is incorrect 
+            let element = document.getElementById(id);
+            element.classList.add("incorrect"); 
         }
     }
 
@@ -175,10 +171,10 @@ let exercises = [
     element3.innerHTML = exercise.option3;
     element4.innerHTML = exercise.option4;
 
-    element1.onClick = exercise.grade("ans1", 1);
-    element2.onClick = exercise.grade("ans2", 2);
-    element3.onClick = exercise.grade("ans3", 3);
-    element4.onClick = exercise.grade("ans4", 4);
+    element1.onClick = function() {exercise.grade("ans1", 1);};
+    element2.onClick = function() {exercise.grade("ans2", 2);};
+    element3.onClick = function() {exercise.grade("ans3", 3);};
+    element4.onClick = function() {exercise.grade("ans4", 4);};
 
 
     //play audio 
