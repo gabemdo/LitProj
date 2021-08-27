@@ -7,7 +7,7 @@ class Word {
     }
 
     get sound() { return `audio/word/${this.word}.mp3`; }
-    get slow() { return `audio/word/${this.word}Slow.mp3`; }
+    get slow()  { return `audio/word/${this.word}Slow.mp3`; }
     get image() { return `img/word/${this.word}.png`; }
 
     loadWord(element) {
@@ -47,21 +47,23 @@ class Exercise {
     get option4() { return this.correctOption == 4 ? this.correct : this.incorrect[2]; }
 
     grade(id, option) {
-        console.log("Click grade:")
-        if (option == this.correctOption) {
-            console.log("Correct answer");
-            //show answer is correct 
-            let element = document.getElementById(id);
-            element.classList.add("correct"); 
-            element.addEventListener('animationend', () => {
-                document.location.refresh(true);
-            });
-        } else {
-            console.log("Incorrect answer");
-            //show answer is incorrect 
-            let element = document.getElementById(id);
-            element.classList.add("incorrect"); 
-        }
+        let self = this;
+        console.log("Pass grade to", id);
+        return (function() {
+            console.log("grading");
+            if (option == self.correctOption) {
+                console.log(" Correct Answer");
+                let element = document.getElementById(id);
+                element.classList.add("correct");
+                element.addEventListener('animationend', () => {
+                    document.location.refresh(true);
+                });
+            } else {
+               console.log(" Incorrect Answer");
+               let element = document.getElementById(id);
+               element.classList.add("incorrect"); 
+            }
+        });
     }
 
     loadInstruction(parrotElement) {
@@ -174,10 +176,10 @@ let exercises = [
     element3.innerHTML = exercise.option3;
     element4.innerHTML = exercise.option4;
 
-    element1.onClick = function() {Word.grade.call(exercise,"ans1", 1);};
-    element2.onClick = function() {Word.grade.call(exercise,"ans2", 2);};
-    element3.onClick = function() {Word.grade.call(exercise,"ans3", 3);};
-    element4.onClick = function() {Word.grade.call(exercise,"ans4", 4);};
+    element1.onClick = exercise.grade("ans1", 1);
+    element2.onClick = exercise.grade("ans2", 2);
+    element3.onClick = exercise.grade("ans3", 3);
+    element4.onClick = exercise.grade("ans4", 4);
     console.log("Options initialized.")
 
 
