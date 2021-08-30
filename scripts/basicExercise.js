@@ -46,24 +46,25 @@ class Exercise {
 
     get option4() { return this.correctOption == 4 ? this.correct : this.incorrect[2]; }
 
-    grade(id, option) {
+    prepGrade(element, option) {
         let self = this;
-        console.log("Pass grade to", id);
-        return (function() {
-            console.log("grading");
-            if (option == self.correctOption) {
+        console.log("Pass grade to", option);
+        if (option == self.correctOption) {
+            element.addEventListener("click", () => {
                 console.log(" Correct Answer");
-                let element = document.getElementById(id);
                 element.classList.add("correct");
+                /*
                 element.addEventListener('animationend', () => {
-                    document.location.refresh(true);
+                    element.ownerDocument.location.refresh(true);
                 });
-            } else {
-               console.log(" Incorrect Answer");
-               let element = document.getElementById(id);
-               element.classList.add("incorrect"); 
-            }
-        });
+                */
+            });
+        } else {
+            element.addEventListener("click", () => {
+                console.log(" Incorrect Answer");
+                element.classList.add("incorrect");
+            });
+        }
     }
 
     loadInstruction(parrotElement) {
@@ -166,15 +167,23 @@ let exercises = [
     //set up answers
     console.log("Options:", exercise.option1, exercise.option2, exercise.option3, exercise.option4);
    
-    document.getElementById("ans1").innerHTML = exercise.option1;
-    document.getElementById("ans2").innerHTML = exercise.option2; 
-    document.getElementById("ans3").innerHTML = exercise.option3;
-    document.getElementById("ans4").innerHTML = exercise.option4;
+    let opt1 = document.getElementById("ans1")
+    opt1.innerHTML = exercise.option1;
 
-    document.getElementById("ans1").onClick = exercise.grade("ans1", 1);
-    document.getElementById("ans2").onClick = exercise.grade("ans2", 2);
-    document.getElementById("ans3").onClick = exercise.grade("ans3", 3);
-    document.getElementById("ans4").onClick = exercise.grade("ans4", 4);
+    let opt2 = document.getElementById("ans2")
+    opt2.innerHTML = exercise.option2; 
+
+    let opt3 = document.getElementById("ans3")
+    opt3.innerHTML = exercise.option3;
+    
+    let opt4 = document.getElementById("ans4")
+    opt4.innerHTML = exercise.option4;
+
+    exercise.prepGrade(opt1,1);
+    exercise.prepGrade(opt2,2);
+    exercise.prepGrade(opt3,3);
+    exercise.prepGrade(opt4,4);
+
     console.log("Options initialized.")
 
 
