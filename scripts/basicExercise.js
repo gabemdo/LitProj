@@ -53,6 +53,7 @@ class Exercise {
             element.addEventListener("click", () => {
                 console.log(" Correct Answer");
                 element.classList.add("correct");
+                //add in SFX
                 /*
                 element.addEventListener('animationend', () => {
                     element.ownerDocument.location.refresh(true);
@@ -78,7 +79,11 @@ class Exercise {
 
 let words = [
     ['c', 'a', 't', 'cat'],
-    ['b', 'a', 't', 'bat'],
+    ['g', 'e', 'm', 'gem'],
+    ['m', 'a', 'p', 'map'],
+    ['n', 'u', 't', 'nut'],
+    ['p', 'i', 'g', 'pig'],
+/*    ['b', 'a', 't', 'bat'],
     ['r', 'a', 't', 'rat'],
     ['h', 'a', 't', 'hat'],
     ['b', 'a', 'g', 'bag'],
@@ -88,7 +93,6 @@ let words = [
     ['p', 'a', 'n', 'pan'],
     ['v', 'a', 'n', 'van'],
     ['c', 'a', 'p', 'cap'],
-    ['m', 'a', 'p', 'map'],
     ['h', 'a', 'm', 'ham'],
     ['j', 'a', 'm', 'jam'],
     ['r', 'a', 'm', 'ram'],
@@ -97,13 +101,11 @@ let words = [
     ['h', 'e', 'n', 'hen'],
     ['p', 'e', 'n', 'pen'],
     ['w', 'e', 'b', 'web'],
-    ['g', 'e', 'm', 'gem'],
-    ['p', 'i', 'g', 'pig'],
     ['d', 'o', 'g', 'dog'],
     ['b', 'u', 'g', 'bug'],
     ['s', 'u', 'n', 'sun'],
-    ['n', 'u', 't', 'nut'],
-    ['c', 'u', 'p', 'cup'],
+    
+    ['c', 'u', 'p', 'cup'],*/
 ];
 
 function randomInt(min, max) {return min + Math.floor(Math.random() * (max - min + 1)); };
@@ -162,7 +164,7 @@ let exercises = [
     let exercise = new Exercise(word, ...exercises[exerciseChoice]);
 
     //set up word image
-    //document.getElementById("word").src = word.image;
+    document.getElementById("word").src = word.image;
 
     //set up answers
     console.log("Options:", exercise.option1, exercise.option2, exercise.option3, exercise.option4);

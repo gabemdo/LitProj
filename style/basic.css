@@ -19,7 +19,7 @@ body {
   grid-template-rows: 1fr 8fr 4fr 1fr;
   grid-template-areas:
     "nav nav nav nav nav nav"
-    "main main main . . parrot"
+    "main main . . . parrot"
     "option1 option2 option3 option4 . parrot"
     "footer footer footer footer . parrot";
   grid-gap: 0.2rem;
@@ -70,6 +70,7 @@ main {
   background: var(--background-color, yellow);
   grid-area: parrot;
   padding-top: var(--main-padding);
+  padding-right: 0 !important;
 }
 
 #option1 {
